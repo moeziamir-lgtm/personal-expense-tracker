@@ -85,3 +85,26 @@ for expense in expenses:
     )
 
     print(type(amount))
+
+    def add_expense():
+        description = input (" Enter the description of the expense: ")
+        amount = float(input (" Enter the amount of the expense:  "))
+        category = input(" Enter the category of the expense:  ")
+        date = input ("Enter the date of the expense:  ")
+
+        new_expense = {
+                       "description" : description,
+                       "amount" : amount,
+                       "category" : category,
+                       "date" : date
+
+                       }
+        expenses.append(new_expense)
+
+
+add_expense()  
+
+print(expenses)
+
+
+        
