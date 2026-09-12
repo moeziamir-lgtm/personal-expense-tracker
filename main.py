@@ -58,3 +58,30 @@ for expense in expenses:
         f"{expense["amount"]:.2f} | "
 
     )    
+
+description = input (" Enter the description of the expense: ")
+amount = float(input (" Enter the amount of the expense:  "))
+category = input(" Enter the category of the expense:  ")
+date = input ("Enter the date of the expense:  ")
+
+new_expense = {
+    "description" : description,
+        "amount" : amount,
+        "category" : category,
+        "date" : date
+
+}
+
+print(new_expense)
+
+expenses.append(new_expense)
+print(expenses)
+
+for expense in expenses:
+    print(
+        f"{expense["description"]} |"
+        f"{expense["category"]} | "
+        f"{expense["amount"]}"
+    )
+
+    print(type(amount))
