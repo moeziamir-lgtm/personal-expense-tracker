@@ -1,4 +1,6 @@
+print("==========================")
 print(" personal expense tracker")
+print("==========================")
 
 expenses = [
     {
@@ -22,14 +24,6 @@ expenses.append({
     "date" : "2026-09-10"
 })
 
-for expense in expenses:
-    print(
-        f"{expense["description"]} | "
-        f"{expense["category"]} | "
-        f"{expense["amount"]:.2f} | "
-
-    )    
-
 def add_expense():
     description = input (" Enter the description of the expense: ")
     amount = float(input (" Enter the amount of the expense:  "))
@@ -52,28 +46,31 @@ def view_expense():
     if not expenses:
         print("there is no expenses")
     else:
-        
         for expense in expenses:
-              print(f"{expense["description"]}  |"
-              f"{expense["category"]}  |"
-              f"{expense["amount"]:.2f}"
-              )
+            print(f"{expense["description"]}  |"
+            f"{expense["category"]}  |"
+            f"{expense["amount"]:.2f}"
+            )
 
 while True:
-    answer = input("do you want to continue? (y/n)").lower()
+    print("1. Add expense")
+    print("2. View expense")
+    print("1. Exit")
+    choice = float(input("choose your option:  "))
+    
 
-    if answer == "n":
-        print (" Goodbye")
+    if choice == 1:
+        add_expense()
+        print("----------------------")
+
+    elif choice == 2:
+        view_expense()
+        print("----------------------")
+
+    elif choice == 3:
+        print("Goodbye")
         break
 
-    elif answer == "y":
-        add_expense()
-
     else:
-        print("Please pay attention and type 'y' or 'n' ")    
+        print(" Please enter the valid number")
 
-
-
-view_expense()
-
-        
