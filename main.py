@@ -26,7 +26,13 @@ expenses.append({
 
 def add_expense():
     description = input (" Enter the description of the expense: ")
-    amount = float(input (" Enter the amount of the expense:  "))
+    amount = None
+    while amount == None:
+        try:
+            amount = float(input (" Enter the amount of the expense:  "))
+        except ValueError:
+            print("Invalid number")
+
     category = input(" Enter the category of the expense:  ")
     date = input ("Enter the date of the expense:  ")
 
@@ -56,7 +62,13 @@ while True:
     print("1. Add expense")
     print("2. View expense")
     print("1. Exit")
-    choice = float(input("choose your option:  "))
+    choice = None
+    while choice == None:
+        try:
+            choice = float(input("choose your option:  "))
+        except ValueError:
+            print("invalid number")    
+
     
 
     if choice == 1:
