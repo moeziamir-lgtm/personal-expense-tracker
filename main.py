@@ -58,18 +58,31 @@ def view_expense():
             f"{expense["amount"]:.2f}"
             )
 
+
+def search_expense():
+    cat = input("Please enter your desired category: ")
+    for expense in expenses:
+        Found = False
+        if expense["category"] == cat:
+            print(f"{expense["description"]}  |",
+            f"{expense["category"]} |",
+            f"{expense["amount"]:.2f}")
+            Found = True
+
+    if Found == False:
+        print(f"No expense found for the category: {cat} ")   
+
 while True:
     print("1. Add expense")
     print("2. View expense")
-    print("1. Exit")
+    print("3. search")
+    print("4. Exit")
     choice = None
     while choice == None:
         try:
             choice = float(input("choose your option:  "))
         except ValueError:
             print("invalid number")    
-
-    
 
     if choice == 1:
         add_expense()
@@ -80,9 +93,16 @@ while True:
         print("----------------------")
 
     elif choice == 3:
+        search_expense()
+        print("------------------------")    
+
+    elif choice == 4:
         print("Goodbye")
         break
 
     else:
         print(" Please enter the valid number")
+
+
+
 
