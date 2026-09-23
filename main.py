@@ -2,7 +2,7 @@ print("==========================")
 print(" personal expense tracker")
 print("==========================")
 
-expenses = [
+expenses = [ 
     {
         "id_expense" : 1,
         "description" : "Coffee",
@@ -39,7 +39,7 @@ expenses = [
             "date" : "2026-07-27"
         }
 ]
-
+ 
 expenses.append({
     "id_expense" : 6,
     "description" : "lunch",
@@ -126,14 +126,26 @@ def delet_expense():
     if Found == False:
         print("Expense not found")
 
+def calculate_total():
+
+    total = 0
+
+    for expense in expenses:
+        total += expense["amount"]
+
+    print(f" The total expense amount is:  {total:.3f}")
+
+    if expenses == []:
+        print("There is no expense to be added") 
+    
 
 while True:
     print("1. Add expense")
     print("2. View expense")
     print("3. search")
     print("4. Deletion")
-    print("5. Exit")
-
+    print("5. calculate total")
+    print("6. Exit")
     choice = None
     while choice == None:
         try:
@@ -158,9 +170,13 @@ while True:
         print("------------------------")    
 
     elif choice == 5:
+        calculate_total()
+        print("-------------------------")
+
+        
+    elif choice == 6:
         print("Goodbye")
         break
-
     else:
         print(" Please enter the valid number")
 
