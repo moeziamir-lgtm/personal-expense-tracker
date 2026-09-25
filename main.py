@@ -139,13 +139,41 @@ def calculate_total():
         print("There is no expense to be added") 
     
 
+def category_total():
+
+    if expenses == []:
+        print("No expense found")
+
+
+    categories = {}
+    for expense in expenses:
+        category = expense["category"]
+        amount = expense["amount"]
+
+        if category in categories:
+            categories[category] += amount
+        else:
+            categories[category] = amount
+
+    categories_1 = list(categories.items()) 
+    n = 0
+
+    while n < len(categories):
+        largest = max(categories_1, key=lambda x:x[1])
+        print(largest)
+        categories_1.remove(largest)
+        n += 1
+
+
+
 while True:
     print("1. Add expense")
     print("2. View expense")
     print("3. search")
     print("4. Deletion")
     print("5. calculate total")
-    print("6. Exit")
+    print("6. calculate total category")
+    print("7. Exit")
     choice = None
     while choice == None:
         try:
@@ -175,8 +203,13 @@ while True:
 
         
     elif choice == 6:
-        print("Goodbye")
-        break
+        category_total()
+        print("-------------------------")
+
+    elif choice == 7:
+            print("Goodbye")
+            break
+    
     else:
         print(" Please enter the valid number")
 
