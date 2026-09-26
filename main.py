@@ -1,3 +1,5 @@
+from datetime import date
+
 print("==========================")
 print(" personal expense tracker")
 print("==========================")
@@ -65,14 +67,14 @@ def add_expense():
             print("Invalid number")
 
     category = input(" Enter the category of the expense:  ")
-    date = input ("Enter the date of the expense:  ")
-
+    date1 = date.today().isoformat()
+    
     new_expense = {
                     "id_expense" : id_expense,
                     "description" : description,
                     "amount" : amount,
                     "category" : category,
-                    "date" : date
+                    "date" : date1
 
                     }
     expenses.append(new_expense)
@@ -86,11 +88,12 @@ def view_expense():
     else:
         for expense in expenses:
             print(
-            f"{expense["id_expense"]}. "        
-            f"{expense["description"]}  |"
-            f"{expense["category"]}  |"
-            f"{expense["amount"]:.2f}"
-            )
+            f"{expense["id_expense"]:<3}"        
+            f"{expense["description"]:<14} |"
+            f"{expense["category"]:<15} |"
+            f"{expense["amount"]:<10.2f} |"
+            f"{expense["date"]:<15}"
+            )       
 
 
 def search_expense():
