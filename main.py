@@ -1,4 +1,6 @@
 from datetime import date
+import json
+from pathlib import Path
 
 print("==========================")
 print(" personal expense tracker")
@@ -167,7 +169,18 @@ def category_total():
         categories_1.remove(largest)
         n += 1
 
+def save_expense():
+    directory_path = Path("/mnt/d/practice/personal-expense-tracker/save_expense")
+    file_path = directory_path /"expense.json"
 
+    directory_path.mkdir(parents=True, exist_ok=True)
+
+    with open(file_path, "w", encoding="utf-8") as file:
+        json.dump(expenses, file, indent=4)
+
+    print(" you expenses have been saved successfully")    
+
+    
 
 while True:
     print("1. Add expense")
@@ -175,8 +188,9 @@ while True:
     print("3. search")
     print("4. Deletion")
     print("5. calculate total")
-    print("6. calculate total category")
-    print("7. Exit")
+    print("6. calculate total by category")
+    print("7. Save Expenses")
+    print("8. Exit")
     choice = None
     while choice == None:
         try:
@@ -209,7 +223,12 @@ while True:
         category_total()
         print("-------------------------")
 
+
     elif choice == 7:
+            save_expense()
+            print("-------------------------")    
+
+    elif choice == 8:
             print("Goodbye")
             break
     
