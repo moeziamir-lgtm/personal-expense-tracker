@@ -6,51 +6,28 @@ print("==========================")
 print(" personal expense tracker")
 print("==========================")
 
-expenses = [ 
-    {
-        "id_expense" : 1,
-        "description" : "Coffee",
-        "amount" : 10,
-        "category" : "Food",
-        "date" : "2026-09-07"
-    },
-    {
-        "id_expense" : 2,
-        "description" : "Bus",
-        "amount" : 7.5,
-        "category" : "Transport",
-        "date" : "2026-09-08"
-    },
-    {
-            "id_expense" : 3,
-            "description" : "Travel",
-            "amount" : 23.43,
-            "category" : "Entertainment",
-            "date" : "2026-08-17"
-        },
-    {
-            "id_expense" : 4,
-            "description" : "stationary",
-            "amount" : 18.10,
-            "category" : "kids",
-            "date" : "2026-07-27"
-        },
-    {
-            "id_expense" : 5,
-            "description" : "medicine",
-            "amount" : 18.10,
-            "category" : "Medical",
-            "date" : "2026-07-27"
-        }
-]
- 
-expenses.append({
-    "id_expense" : 6,
-    "description" : "lunch",
-    "amount" : 23.43,
-    "category" : "Food",
-    "date" : "2026-09-10"
-})
+
+dirctory_path = Path("/mnt/d/practice/personal-expense-tracker/save_expense")
+
+file_path = dirctory_path/"expenses.json"
+
+dirctory_path.mkdir(parents=True, exist_ok=True)
+
+def load_expense(file_path : Path)-> dict:
+    try:
+        with file_path.open("r", encoding="utf-8") as file:
+            return json.load(file)
+
+    except FileNotFoundError:
+        raise FileNotFoundError(f"expenses file was not found in {file_path}")
+
+    except json.JSONDecodeError as error:
+        raise ValueError(
+            f"file contain invalid json: {error}"
+        )    
+
+
+expenses = load_expense(file_path)
 
 def generate_id(expenses):
     if not expenses:
@@ -83,8 +60,10 @@ def add_expense():
 
 
 def view_expense():
+
     print("Current Expense")
     print("-----------------")
+    
     if not expenses:
         print("there is no expenses")
     else:
@@ -170,17 +149,13 @@ def category_total():
         n += 1
 
 def save_expense():
-    directory_path = Path("/mnt/d/practice/personal-expense-tracker/save_expense")
-    file_path = directory_path /"expense.json"
-
-    directory_path.mkdir(parents=True, exist_ok=True)
-
+    
     with open(file_path, "w", encoding="utf-8") as file:
         json.dump(expenses, file, indent=4)
 
-    print(" you expenses have been saved successfully")    
+    print(" your expenses have been saved successfully")    
 
-    
+
 
 while True:
     print("1. Add expense")
