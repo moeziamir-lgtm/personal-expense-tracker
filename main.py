@@ -1,6 +1,11 @@
 import json
 from pathlib import Path
-from expense_manager import test_module, view_expenses, add_expense, search_expense
+from expense_manager import (test_module,
+                             view_expenses, 
+                             add_expense, 
+                             search_expense,
+                             delet_expense)
+
 
 print("==========================")
 print(" personal expense tracker")
@@ -33,27 +38,6 @@ expenses = load_expense(file_path)
 
 
 
-
-def delet_expense():
-
-    choice = None
-    while choice == None:
-        try:
-            choice = int(input("Please enter the expense id to remove: "))
-        except ValueError:
-            print("Invalid value")    
-
-    Found = False
-
-    for expense in expenses:
-        if expense["id_expense"] == choice:
-            expenses.remove(expense)
-            print("Expense deleted successfuly")
-            Found = True
-            save_expense()
-
-    if Found == False:
-        print("Expense not found")
 
 def calculate_total():
 
@@ -131,7 +115,8 @@ while True:
         print("------------------------")    
 
     elif choice == 4:
-        delet_expense()
+        delet_expense(expenses)
+        save_expense()
         print("------------------------")    
 
     elif choice == 5:

@@ -66,3 +66,25 @@ def search_expense(expenses):
 
     if Found == False:
         print(f"No expense found for the category: {cat} ")   
+
+def delet_expense(expenses):
+
+    choice = None
+    while choice == None:
+        try:
+            choice = int(input("Please enter the expense id to remove: "))
+        except ValueError:
+            print("Invalid value")    
+
+    Found = False
+
+    for expense in expenses:
+        if expense["id_expense"] == choice:
+            expenses.remove(expense)
+            print("Expense deleted successfuly")
+            Found = True
+            
+    if Found == False:
+        print("Expense not found")
+
+
