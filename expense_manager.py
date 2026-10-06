@@ -30,7 +30,7 @@ def generate_id(expenses):
 
 
 
-def add_expense(expenses, file_path):
+def add_expense(expenses : list, file_path):
     id_expense = generate_id(expenses)
     description = input (" Enter the description of the expense: ")
     amount = None
