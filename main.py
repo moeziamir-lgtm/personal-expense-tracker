@@ -5,7 +5,8 @@ from expense_manager import (test_module,
                              add_expense, 
                              search_expense,
                              delet_expense,
-                             calculate_total)
+                             calculate_total,
+                             category_total)
 
 
 print("==========================")
@@ -37,34 +38,6 @@ def load_expense(file_path : Path)-> dict:
 
 expenses = load_expense(file_path)
 
-
-
-
-
-def category_total():
-
-    if expenses == []:
-        print("No expense found")
-
-
-    categories = {}
-    for expense in expenses:
-        category = expense["category"]
-        amount = expense["amount"]
-
-        if category in categories:
-            categories[category] += amount
-        else:
-            categories[category] = amount
-
-    categories_1 = list(categories.items()) 
-    n = 0
-
-    while n < len(categories):
-        largest = max(categories_1, key=lambda x:x[1])
-        print(largest)
-        categories_1.remove(largest)
-        n += 1
 
 def save_expense():
     
@@ -114,7 +87,7 @@ while True:
 
         
     elif choice == 6:
-        category_total()
+        category_total(expenses)
         print("-------------------------")
 
 

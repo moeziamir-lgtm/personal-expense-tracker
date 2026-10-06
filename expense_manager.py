@@ -99,3 +99,29 @@ def calculate_total(expenses):
     if expenses == []:
         print("There is no expense to be added") 
 
+
+def category_total(expenses):
+
+    if expenses == []:
+        print("No expense found")
+
+
+    categories = {}
+    for expense in expenses:
+        category = expense["category"]
+        amount = expense["amount"]
+
+        if category in categories:
+            categories[category] += amount
+        else:
+            categories[category] = amount
+
+    categories_1 = list(categories.items()) 
+    n = 0
+
+    while n < len(categories):
+        largest = max(categories_1, key=lambda x:x[1])
+        print(largest)
+        categories_1.remove(largest)
+        n += 1
+
