@@ -69,7 +69,7 @@ def search_expense(expenses):
     if Found == False:
         print(f"No expense found for the category: {cat} ")   
 
-def delet_expense(expenses):
+def delet_expense(expenses,file_path):
 
     choice = None
     while choice == None:
@@ -85,6 +85,7 @@ def delet_expense(expenses):
             expenses.remove(expense)
             print("Expense deleted successfuly")
             Found = True
+            save_expense(expenses, file_path)
             
     if Found == False:
         print("Expense not found")

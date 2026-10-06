@@ -53,8 +53,7 @@ while True:
         print("------------------------")    
 
     elif choice == 4:
-        delet_expense(expenses)
-        save_expense(expenses, file_path)
+        delet_expense(expenses,file_path)
         print("------------------------")    
 
     elif choice == 5:
