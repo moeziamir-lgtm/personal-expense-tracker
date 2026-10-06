@@ -4,7 +4,8 @@ from expense_manager import (test_module,
                              view_expenses, 
                              add_expense, 
                              search_expense,
-                             delet_expense)
+                             delet_expense,
+                             calculate_total)
 
 
 print("==========================")
@@ -39,18 +40,6 @@ expenses = load_expense(file_path)
 
 
 
-def calculate_total():
-
-    total = 0
-
-    for expense in expenses:
-        total += expense["amount"]
-
-    print(f" The total expense amount is:  {total:.3f}")
-
-    if expenses == []:
-        print("There is no expense to be added") 
-    
 
 def category_total():
 
@@ -120,7 +109,7 @@ while True:
         print("------------------------")    
 
     elif choice == 5:
-        calculate_total()
+        calculate_total(expenses)
         print("-------------------------")
 
         

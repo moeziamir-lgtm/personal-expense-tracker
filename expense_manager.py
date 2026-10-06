@@ -87,4 +87,15 @@ def delet_expense(expenses):
     if Found == False:
         print("Expense not found")
 
+def calculate_total(expenses):
+
+    total = 0
+
+    for expense in expenses:
+        total += expense["amount"]
+
+    print(f" The total expense amount is:  {total:.3f}")
+
+    if expenses == []:
+        print("There is no expense to be added") 
 
