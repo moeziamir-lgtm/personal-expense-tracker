@@ -6,7 +6,6 @@ from expense_manager import (view_expenses,
                              delet_expense,
                              calculate_total,
                              category_total,
-                             save_expense,
                              load_expense)
 
 
