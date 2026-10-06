@@ -128,7 +128,7 @@ def category_total(expenses):
         categories_1.remove(largest)
         n += 1
 
-def save_expense(expenses, file_path):
+def save_expense(expenses, file_path : Path):
     
     with open(file_path, "w", encoding="utf-8") as file:
         json.dump(expenses, file, indent=4)
