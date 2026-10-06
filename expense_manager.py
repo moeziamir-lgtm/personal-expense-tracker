@@ -1,3 +1,5 @@
+from datetime import date
+
 
 def test_module():
     print("I am testing the module")
@@ -19,4 +21,36 @@ def view_expenses(expenses):
             f"{expense["amount"]:<10.2f} |"
             f"{expense["date"]:<15}"
             )       
+
+
+def generate_id(expenses):
+    if not expenses:
+        return 1
+    return max(expense["id_expense"] for expense in expenses) + 1
+
+
+
+
+def add_expense(expenses):
+    id_expense = generate_id(expenses)
+    description = input (" Enter the description of the expense: ")
+    amount = None
+    while amount == None:
+        try:
+            amount = float(input (" Enter the amount of the expense:  "))
+        except ValueError:
+            print("Invalid number")
+
+    category = input(" Enter the category of the expense:  ")
+    date1 = date.today().isoformat()
+    
+    new_expense = {
+                    "id_expense" : id_expense,
+                    "description" : description,
+                    "amount" : amount,
+                    "category" : category,
+                    "date" : date1
+
+                    }
+    expenses.append(new_expense)
 
