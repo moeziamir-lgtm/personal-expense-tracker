@@ -58,6 +58,8 @@ def add_expense():
                     }
     expenses.append(new_expense)
 
+    save_expense()
+
 
 def view_expense():
 
@@ -106,6 +108,7 @@ def delet_expense():
             expenses.remove(expense)
             print("Expense deleted successfuly")
             Found = True
+            save_expense()
 
     if Found == False:
         print("Expense not found")
@@ -164,8 +167,7 @@ while True:
     print("4. Deletion")
     print("5. calculate total")
     print("6. calculate total by category")
-    print("7. Save Expenses")
-    print("8. Exit")
+    print("7. Exit")
     choice = None
     while choice == None:
         try:
@@ -200,10 +202,6 @@ while True:
 
 
     elif choice == 7:
-            save_expense()
-            print("-------------------------")    
-
-    elif choice == 8:
             print("Goodbye")
             break
     
