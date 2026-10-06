@@ -1,7 +1,6 @@
 import json
 from pathlib import Path
-from expense_manager import (test_module,
-                             view_expenses, 
+from expense_manager import (view_expenses, 
                              add_expense, 
                              search_expense,
                              delet_expense,
@@ -15,8 +14,6 @@ print("==========================")
 print(" personal expense tracker")
 print("==========================")
 
-test_module()
-
 
 dirctory_path = Path("/mnt/d/practice/personal-expense-tracker/save_expense")
 
@@ -25,10 +22,7 @@ file_path = dirctory_path/"expenses.json"
 dirctory_path.mkdir(parents=True, exist_ok=True)
 
 
-
 expenses = load_expense(file_path)
-
-
 
 
 while True:
@@ -47,8 +41,7 @@ while True:
             print("invalid number")    
 
     if choice == 1:
-        add_expense(expenses)
-        save_expense(expenses, file_path)
+        add_expense(expenses,file_path)
         print("----------------------")
 
     elif choice == 2:

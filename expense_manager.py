@@ -3,9 +3,6 @@ import json
 from pathlib import Path
 
 
-def test_module():
-    print("I am testing the module")
-
 def view_expenses(expenses):
 
     
@@ -33,7 +30,7 @@ def generate_id(expenses):
 
 
 
-def add_expense(expenses):
+def add_expense(expenses, file_path):
     id_expense = generate_id(expenses)
     description = input (" Enter the description of the expense: ")
     amount = None
@@ -56,7 +53,9 @@ def add_expense(expenses):
                     }
     expenses.append(new_expense)
 
-   
+    save_expense(expenses, file_path)
+
+    
 def search_expense(expenses):
     cat = input("Please enter your desired category: ")
     Found = False
