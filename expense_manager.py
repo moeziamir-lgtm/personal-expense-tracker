@@ -54,3 +54,15 @@ def add_expense(expenses):
                     }
     expenses.append(new_expense)
 
+def search_expense(expenses):
+    cat = input("Please enter your desired category: ")
+    Found = False
+    for expense in expenses:
+        if expense["category"] == cat:
+            print(f"{expense["description"]}  |",
+            f"{expense["category"]} |",
+            f"{expense["amount"]:.2f}")
+            Found = True
+
+    if Found == False:
+        print(f"No expense found for the category: {cat} ")   

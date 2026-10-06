@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from expense_manager import test_module, view_expenses, add_expense
+from expense_manager import test_module, view_expenses, add_expense, search_expense
 
 print("==========================")
 print(" personal expense tracker")
@@ -33,18 +33,6 @@ expenses = load_expense(file_path)
 
 
 
-def search_expense():
-    cat = input("Please enter your desired category: ")
-    Found = False
-    for expense in expenses:
-        if expense["category"] == cat:
-            print(f"{expense["description"]}  |",
-            f"{expense["category"]} |",
-            f"{expense["amount"]:.2f}")
-            Found = True
-
-    if Found == False:
-        print(f"No expense found for the category: {cat} ")   
 
 def delet_expense():
 
@@ -139,7 +127,7 @@ while True:
         print("----------------------")
 
     elif choice == 3:
-        search_expense()
+        search_expense(expenses)
         print("------------------------")    
 
     elif choice == 4:
