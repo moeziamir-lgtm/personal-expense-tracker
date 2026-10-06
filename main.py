@@ -1,10 +1,13 @@
 from datetime import date
 import json
 from pathlib import Path
+from expense_manager import test_module
 
 print("==========================")
 print(" personal expense tracker")
 print("==========================")
+
+test_module()
 
 
 dirctory_path = Path("/mnt/d/practice/personal-expense-tracker/save_expense")
