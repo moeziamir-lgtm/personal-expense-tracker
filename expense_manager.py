@@ -1,4 +1,6 @@
 from datetime import date
+import json
+from pathlib import Path
 
 
 def test_module():
@@ -54,6 +56,7 @@ def add_expense(expenses):
                     }
     expenses.append(new_expense)
 
+   
 def search_expense(expenses):
     cat = input("Please enter your desired category: ")
     Found = False
@@ -124,4 +127,11 @@ def category_total(expenses):
         print(largest)
         categories_1.remove(largest)
         n += 1
+
+def save_expense(expenses, file_path):
+    
+    with open(file_path, "w", encoding="utf-8") as file:
+        json.dump(expenses, file, indent=4)
+
+    print(" your expenses have been saved successfully")    
 

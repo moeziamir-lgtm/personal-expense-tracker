@@ -6,7 +6,8 @@ from expense_manager import (test_module,
                              search_expense,
                              delet_expense,
                              calculate_total,
-                             category_total)
+                             category_total,
+                             save_expense)
 
 
 print("==========================")
@@ -39,13 +40,6 @@ def load_expense(file_path : Path)-> dict:
 expenses = load_expense(file_path)
 
 
-def save_expense():
-    
-    with open(file_path, "w", encoding="utf-8") as file:
-        json.dump(expenses, file, indent=4)
-
-    print(" your expenses have been saved successfully")    
-
 
 
 while True:
@@ -65,7 +59,7 @@ while True:
 
     if choice == 1:
         add_expense(expenses)
-        save_expense()
+        save_expense(expenses, file_path)
         print("----------------------")
 
     elif choice == 2:
@@ -78,7 +72,7 @@ while True:
 
     elif choice == 4:
         delet_expense(expenses)
-        save_expense()
+        save_expense(expenses, file_path)
         print("------------------------")    
 
     elif choice == 5:
