@@ -1,7 +1,7 @@
 from datetime import date
 import json
 from pathlib import Path
-from expense_manager import test_module
+from expense_manager import test_module, view_expenses
 
 print("==========================")
 print(" personal expense tracker")
@@ -63,23 +63,6 @@ def add_expense():
 
     save_expense()
 
-
-def view_expense():
-
-    print("Current Expense")
-    print("-----------------")
-    
-    if not expenses:
-        print("there is no expenses")
-    else:
-        for expense in expenses:
-            print(
-            f"{expense["id_expense"]:<3}"        
-            f"{expense["description"]:<14} |"
-            f"{expense["category"]:<15} |"
-            f"{expense["amount"]:<10.2f} |"
-            f"{expense["date"]:<15}"
-            )       
 
 
 def search_expense():
@@ -165,7 +148,7 @@ def save_expense():
 
 while True:
     print("1. Add expense")
-    print("2. View expense")
+    print("2. View expenses")
     print("3. search")
     print("4. Deletion")
     print("5. calculate total")
@@ -183,7 +166,7 @@ while True:
         print("----------------------")
 
     elif choice == 2:
-        view_expense()
+        view_expenses(expenses)
         print("----------------------")
 
     elif choice == 3:
