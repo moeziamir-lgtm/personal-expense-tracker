@@ -7,7 +7,8 @@ from expense_manager import (test_module,
                              delet_expense,
                              calculate_total,
                              category_total,
-                             save_expense)
+                             save_expense,
+                             load_expense)
 
 
 print("==========================")
@@ -23,18 +24,6 @@ file_path = dirctory_path/"expenses.json"
 
 dirctory_path.mkdir(parents=True, exist_ok=True)
 
-def load_expense(file_path : Path)-> dict:
-    try:
-        with file_path.open("r", encoding="utf-8") as file:
-            return json.load(file)
-
-    except FileNotFoundError:
-        raise FileNotFoundError(f"expenses file was not found in {file_path}")
-
-    except json.JSONDecodeError as error:
-        raise ValueError(
-            f"file contain invalid json: {error}"
-        )    
 
 
 expenses = load_expense(file_path)

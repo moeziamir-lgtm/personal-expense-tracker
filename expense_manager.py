@@ -135,3 +135,16 @@ def save_expense(expenses, file_path):
 
     print(" your expenses have been saved successfully")    
 
+
+def load_expense(file_path : Path)-> dict:
+    try:
+        with file_path.open("r", encoding="utf-8") as file:
+            return json.load(file)
+
+    except FileNotFoundError:
+        raise FileNotFoundError(f"expenses file was not found in {file_path}")
+
+    except json.JSONDecodeError as error:
+        raise ValueError(
+            f"file contain invalid json: {error}"
+        )    
