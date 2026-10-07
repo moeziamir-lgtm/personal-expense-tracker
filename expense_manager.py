@@ -69,7 +69,7 @@ def search_expense(expenses : list) -> None:
     if Found == False:
         print(f"No expense found for the category: {cat} ")   
 
-def delet_expense(expenses : list,file_path : Path):
+def delet_expense(expenses : list,file_path : Path) -> None:
 
     choice = None
     while choice == None:
