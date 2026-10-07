@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 
-def view_expenses(expenses):
+def view_expenses(expenses : list) -> None:
 
     
     print("Current Expense")
