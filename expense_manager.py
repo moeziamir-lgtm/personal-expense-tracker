@@ -136,7 +136,7 @@ def save_expense(expenses, file_path : Path):
     print(" your expenses have been saved successfully")    
 
 
-def load_expense(file_path : Path)-> dict:
+def load_expense(file_path : Path)-> list:
     try:
         with file_path.open("r", encoding="utf-8") as file:
             return json.load(file)
