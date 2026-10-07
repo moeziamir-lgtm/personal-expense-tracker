@@ -3,6 +3,7 @@ import json
 from pathlib import Path
 from typing import TypedDict
 
+VALID_CATEGORIES = {"Food", "Entertainment", "Transport", "Bills", "Other"}
 class Expense(TypedDict):
     id: int
     description: str
@@ -40,15 +41,36 @@ def generate_id(expenses : list[Expense]) -> int:
 
 def add_expense(expenses : list[Expense], file_path : Path) -> None:
     id_expense = generate_id(expenses)
-    description = input (" Enter the description of the expense: ")
+
+    while True:
+        description = input (" Enter the description of the expense: ").strip()
+
+        if not description:
+            print("Description cannot be empty")
+            continue
+        break
+
     amount = None
     while amount == None:
         try:
             amount = float(input (" Enter the amount of the expense:  "))
+
+            if amount <= 0 :
+                print("Amount must be greater than zero")
+                amount = None
+
         except ValueError:
             print("Invalid number")
 
-    category = input(" Enter the category of the expense:  ")
+    
+    while True:
+        category = input(" Enter the category of the expense:  ").title()
+
+        if category not in VALID_CATEGORIES:
+            print(f"invalid category. Please choose from: {', '.join(VALID_CATEGORIES)}")
+            continue
+        break
+
     date1 = date.today().isoformat()
     
     new_expense = {
@@ -144,7 +166,7 @@ def save_expense(expenses : list[Expense], file_path : Path) -> None:
     print(" your expenses have been saved successfully")    
 
 
-def load_expense(file_path : Path)-> list:
+def load_expense(file_path : Path)-> list[Expense]:
     try:
         with file_path.open("r", encoding="utf-8") as file:
             return json.load(file)
