@@ -1,9 +1,17 @@
 from datetime import date
 import json
 from pathlib import Path
+from typing import TypedDict
+
+class Expense(TypedDict):
+    id: int
+    description: str
+    amount: float
+    category: str
+    date: str
 
 
-def view_expenses(expenses : list[dict]) -> None:
+def view_expenses(expenses : list[Expense]) -> None:
 
     
     print("Current Expense")
@@ -56,7 +64,7 @@ def add_expense(expenses : list[dict], file_path : Path) -> None:
     save_expense(expenses, file_path)
 
     
-def search_expense(expenses : list[dict]) -> None:
+def search_expense(expenses : list[Expense]) -> None:
     cat = input("Please enter your desired category: ")
     Found = False
     for expense in expenses:
@@ -69,7 +77,7 @@ def search_expense(expenses : list[dict]) -> None:
     if Found == False:
         print(f"No expense found for the category: {cat} ")   
 
-def delet_expense(expenses : list[dict],file_path : Path) -> None:
+def delet_expense(expenses : list[Expense],file_path : Path) -> None:
 
     choice = None
     while choice == None:
@@ -90,7 +98,7 @@ def delet_expense(expenses : list[dict],file_path : Path) -> None:
     if Found == False:
         print("Expense not found")
 
-def calculate_total(expenses: list[dict]) -> None:
+def calculate_total(expenses: list[Expense]) -> None:
 
     total = 0
 
