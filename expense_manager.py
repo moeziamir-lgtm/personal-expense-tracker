@@ -90,7 +90,7 @@ def delet_expense(expenses,file_path):
     if Found == False:
         print("Expense not found")
 
-def calculate_total(expenses):
+def calculate_total(expenses: list) -> None:
 
     total = 0
 
