@@ -30,7 +30,7 @@ def generate_id(expenses):
 
 
 
-def add_expense(expenses : list, file_path):
+def add_expense(expenses : list, file_path : Path) -> None:
     id_expense = generate_id(expenses)
     description = input (" Enter the description of the expense: ")
     amount = None
@@ -56,7 +56,7 @@ def add_expense(expenses : list, file_path):
     save_expense(expenses, file_path)
 
     
-def search_expense(expenses):
+def search_expense(expenses : list) -> None:
     cat = input("Please enter your desired category: ")
     Found = False
     for expense in expenses:
@@ -69,7 +69,7 @@ def search_expense(expenses):
     if Found == False:
         print(f"No expense found for the category: {cat} ")   
 
-def delet_expense(expenses,file_path):
+def delet_expense(expenses : list,file_path : Path):
 
     choice = None
     while choice == None:
@@ -103,7 +103,7 @@ def calculate_total(expenses: list) -> None:
         print("There is no expense to be added") 
 
 
-def category_total(expenses):
+def category_total(expenses : list ) -> None:
 
     if expenses == []:
         print("No expense found")
@@ -128,7 +128,7 @@ def category_total(expenses):
         categories_1.remove(largest)
         n += 1
 
-def save_expense(expenses, file_path : Path):
+def save_expense(expenses : list, file_path : Path) -> None:
     
     with open(file_path, "w", encoding="utf-8") as file:
         json.dump(expenses, file, indent=4)
