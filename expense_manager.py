@@ -12,6 +12,18 @@ class Expense(TypedDict):
     date: str
 
 
+def is_valid_date(value: str) -> bool:
+
+    try:
+        date.fromisoformat(value)
+        return True
+    except ValueError:
+        return False           
+
+def is_valid_amount(amount: float)-> bool:
+    return amount >0     
+
+
 def view_expenses(expenses : list[Expense]) -> None:
 
     
@@ -50,14 +62,14 @@ def add_expense(expenses : list[Expense], file_path : Path) -> None:
             continue
         break
 
-    amount = None
-    while amount == None:
+    while True:
         try:
             amount = float(input (" Enter the amount of the expense:  "))
 
-            if amount <= 0 :
+            if not is_valid_amount(amount) :
                 print("Amount must be greater than zero")
-                amount = None
+                continue
+            break
 
         except ValueError:
             print("Invalid number")
@@ -71,14 +83,22 @@ def add_expense(expenses : list[Expense], file_path : Path) -> None:
             continue
         break
 
-    date1 = date.today().isoformat()
+    while True:
+        expense_date = date.today().isoformat()
+
+        if not is_valid_date(expense_date):
+            print("Invalid expense date")
+            return
+        else:
+            break
+
     
     new_expense = {
                     "id_expense" : id_expense,
                     "description" : description,
                     "amount" : amount,
                     "category" : category,
-                    "date" : date1
+                    "date" : expense_date
 
                     }
     expenses.append(new_expense)
