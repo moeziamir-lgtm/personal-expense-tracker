@@ -1,0 +1,18 @@
+# python generated file
+__pycash__/
+*.py[cod]
+
+# vitual environment
+.venv/
+venv/
+
+#environment variables and secrets
+
+.env
+
+#personal and generated expense data
+
+save_expense/expenses.json
+
+# Temporary test files
+test13.py
